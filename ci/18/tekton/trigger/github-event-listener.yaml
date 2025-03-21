@@ -18,10 +18,10 @@ spec:
               value:
                 - pull_request
                 - push
-      bindings:
+      bindings: # 定义了事件数据与tekton pipeline参数之间的绑定关系。
         - name: git_url
           value: $(body.repository.ssh_url)
-        - name: subdirectory
+        - name: subdirectory # 这表示从事件体中提取 after 字段的值。after 字段通常包含提交的 SHA 值，用于标识具体的提交。subdirectory指定构建的子目录。
           value: $(body.after)
       template:
         ref: github-template
